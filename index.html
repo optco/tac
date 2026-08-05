@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/site.webmanifest">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Alps Co. — Sustainable Outdoor Equipment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Preload the hover image to prevent network lag and flickering on first hover -->
+<link rel="preload" as="image" href="logo2.png">
+
+<style>
+  :root{
+    --bg:#0a0a0b;
+    --surface:#121316;
+    --line:rgba(255,255,255,.08);
+    --text:#f4f3ef;
+    --muted:#9b9b93;
+    --accent:#a3b18a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:-.02em}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .label{font-size:12px;text-transform:uppercase;letter-spacing:.25em;color:var(--accent)}
+
+  /* ---------- NAV ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 40px;background:rgba(10,10,11,.75);
+      backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav .logo{display:flex;align-items:center;gap:12px}
+  nav .logo img{height:44px;width:auto; cursor: pointer;}        /* YOUR IMAGE: logo.png */
+  nav .links{display:flex;gap:36px;font-size:13px;text-transform:uppercase;letter-spacing:.15em}
+  nav .links a{color:var(--muted);transition:color .25s}
+  nav .links a:hover{color:var(--text)}
+  .btn{display:inline-block;padding:14px 34px;border:1px solid var(--text);
+       font-size:12px;text-transform:uppercase;letter-spacing:.2em;
+       transition:.3s;cursor:pointer;background:none;color:var(--text)}
+  .btn:hover{background:var(--text);color:var(--bg)}
+  .btn.solid{background:var(--accent);border-color:var(--accent);color:#0a0a0b}
+  .btn.solid:hover{background:transparent;color:var(--accent)}
+
+  /* ---------- HERO ---------- */
+  header{min-height:100vh;display:flex;align-items:flex-end;
+         padding:0 40px 90px;
+         background:linear-gradient(rgba(10,10,11,.35),rgba(10,10,11,.92)),
+                    url('image1.png') center/cover no-repeat;}  /* YOUR IMAGE: image1.png */
+  header .inner{max-width:1200px;margin:0 auto;width:100%}
+  header h1{font-size:clamp(48px,8vw,104px);line-height:1.02;margin:20px 0 24px}
+  header p{max-width:520px;color:var(--muted);font-size:17px;margin-bottom:38px}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+  .eco-badge{display:inline-flex;align-items:center;gap:8px;margin-top:34px;
+             font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+  .eco-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+  /* ---------- TICKER ---------- */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+          overflow:hidden;white-space:nowrap;padding:16px 0}
+  .ticker span{display:inline-block;font-size:13px;letter-spacing:.25em;
+               text-transform:uppercase;color:var(--muted);
+               animation:scroll 28s linear infinite}
+  .ticker b{color:var(--accent);font-weight:400;margin:0 18px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- PRODUCTS ---------- */
+  section{padding:110px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;
+                margin-bottom:56px;flex-wrap:wrap;gap:20px}
+  .section-head h2{font-size:clamp(30px,4vw,52px);margin-top:12px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .card{background:var(--surface);border:1px solid var(--line);overflow:hidden;
+        transition:transform .35s,border-color .35s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.25)}
+  .card .ph{aspect-ratio:4/5;overflow:hidden;background:#17181c}
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .card:hover .ph img{transform:scale(1.05)}
+  .card .info{padding:22px;display:flex;justify-content:space-between;align-items:center}
+  .card .info h3{font-size:17px}
+  .card .info small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+  .card .price{color:var(--accent);font-family:'Space Grotesk';font-size:16px}
+
+  /* ---------- SUSTAINABILITY ---------- */
+  .sustain{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sustain-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+  .sustain h2{font-size:clamp(30px,4vw,50px);margin:14px 0 22px}
+  .sustain p{color:var(--muted);margin-bottom:18px}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--surface);padding:38px 30px}
+  .stat b{display:block;font-family:'Space Grotesk';font-size:44px;color:var(--accent);font-weight:500}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  /* ---------- NEWSLETTER / FOOTER ---------- */
+  .newsletter{text-align:center}
+  .newsletter h2{font-size:clamp(28px,3.5vw,44px);margin:14px auto 34px;max-width:640px}
+  .news-form{display:flex;max-width:480px;margin:0 auto;border:1px solid var(--line)}
+  .news-form input{flex:1;background:transparent;border:none;outline:none;
+                   color:var(--text);padding:16px 20px;font-family:'Inter'}
+  footer{border-top:1px solid var(--line);padding:60px 0 40px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;align-items:center}
+  .foot img{height:38px; cursor: pointer;}                        /* YOUR IMAGE: logo.png */
+  .foot small{color:var(--muted);font-size:12px;letter-spacing:.1em}
+
+  @media(max-width:820px){
+    nav .links{display:none}
+    .grid{grid-template-columns:1fr}
+    .sustain-grid{grid-template-columns:1fr;gap:44px}
+    header{padding:0 24px 70px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <img src="logo.png" alt="The Alps Co. logo">   <!-- YOUR IMAGE: logo.png -->
+  </a>
+  <div class="links">
+    <a href="#gear">Gear</a>
+    <a href="#sustainability">Sustainability</a>
+    <a href="#journal">Journal</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#gear" class="btn solid" style="padding:11px 26px">Shop</a>
+</nav>
+
+<header>
+  <div class="inner"><br><br>
+    <span class="label">Est. in the high mountains</span>
+    <h1>Gear built for the wild. Made from what we left behind.</h1>
+    <p>Technical outdoor equipment engineered from recycled and sustainably sourced materials — without compromising an ounce of performance.</p>
+    <div class="hero-cta">
+      <a href="#gear" class="btn solid">Explore the collection</a>
+      <a href="#sustainability" class="btn">Our promise</a>
+    </div>
+    <div class="eco-badge">100% recycled shell fabrics &nbsp;·&nbsp; PFC-free &nbsp;·&nbsp; Carbon-neutral shipping</div>
+  </div>
+</header>
+
+<div class="ticker">
+  <span>Recycled materials<b>✦</b>Lifetime repairs<b>✦</b>Fair production<b>✦</b>1% for the planet<b>✦</b>Recycled materials<b>✦</b>Lifetime repairs<b>✦</b>Fair production<b>✦</b>1% for the planet<b>✦</b></span>
+</div>
+
+<section id="gear" class="wrap">
+  <div class="section-head">
+    <div>
+      <span class="label">Featured gear</span>
+      <h2>Built to be used.<br>Designed to be reused.</h2>
+    </div>
+    <a href="#" class="btn">View all</a>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="ph"><img src="image2.png" alt="Alpine shell jacket"></div>  <!-- YOUR IMAGE -->
+      <div class="info">
+        <div><h3>Ridgeline Shell</h3><small>100% recycled 3-layer</small></div>
+        <span class="price">€289</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="image3.png" alt="Expedition backpack"></div>   <!-- YOUR IMAGE -->
+      <div class="info">
+        <div><h3>Col Pass 45L</h3><small>Regenerated ocean nylon</small></div>
+        <span class="price">€199</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ph"><img src="image4.png" alt="Tent"></div>     <!-- YOUR IMAGE -->
+      <div class="info">
+        <div><h3>Serac Waterproof</h3><small>100% Recycled</small></div>
+        <span class="price">€239</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sustainability" class="sustain">
+  <div class="wrap sustain-grid">
+    <div>
+      <span class="label">Sustainability</span>
+      <h2>The mountain gives. We don't take.</h2>
+      <p>Every product we make starts with what already exists — recovered fishing nets, post-consumer plastics, and responsibly sourced natural fibres. What it doesn't start with: virgin polyester, PFCs, or shortcuts.</p>
+      <p>And when your gear wears out, we repair it for life. Landfill is a design failure, not an inevitability.</p>
+      <a href="#" class="btn" style="margin-top:14px">Read our impact report</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>92%</b><span>recycled or bio-based materials across the range</span></div>
+      <div class="stat"><b>0</b><span>PFCs, forever chemicals, in any product</span></div>
+      <div class="stat"><b>14t</b><span>of waste diverted from landfill in 2025</span></div>
+      <div class="stat"><b>∞</b><span>lifetime repair programme, no questions asked</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="journal" class="newsletter wrap">
+  <span class="label">Stay in the loop</span>
+  <h2>Field notes, drops, and repair guides. No noise.</h2>
+  <form class="news-form" onsubmit="event.preventDefault()">
+    <input type="email" placeholder="Your email address" required>
+    <button class="btn solid" style="border:none">Subscribe</button>
+  </form>
+</section>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <img src="logo.png" alt="The Alps Co. logo">   <!-- YOUR IMAGE: logo.png -->
+    <small>© 2026 The Alps Co. — Recycled. Sustainable. Proven above 4,000m.</small>
+    <small>Instagram &nbsp;·&nbsp; YouTube &nbsp;·&nbsp; Contact</small>
+  </div>
+</footer>
+
+<script>
+  // Only apply hover logic to devices that actually support hovering (e.g., desktop mice).
+  // This prevents mobile touch devices from getting "stuck" on logo2.png when tapping the logo to go home.
+  const hasHover = window.matchMedia('(hover: hover)').matches;
+
+  if (hasHover) {
+    const logos = document.querySelectorAll('nav .logo img, footer .foot img');
+    
+    logos.forEach(logo => {
+      logo.addEventListener('mouseenter', () => {
+        logo.src = 'logo2.png';
+      });
+      logo.addEventListener('mouseleave', () => {
+        logo.src = 'logo.png';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
